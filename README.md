@@ -12,10 +12,16 @@ Python3脚本，比起Openstick WIKI里的那个脚本来说，这个监听dbus�
 
 # 使用方法
 
-记得自行配置`config_recipients.json`文件，支持一对多转发。
 ```
 curl -sSL https://raw.githubusercontent.com/f1owkang/SMS_forwarder/main/install_smsforwarder.sh | bash
 ```
+记得安装后自行配置`config_recipients.json`文件，支持一对多转发。
+修改好配置之后重启服务，让你的转发配置生效！！！
+```
+sudo systemctl daemon-reload
+sudo systemctl restart smsforwarder
+```
+后续要进行升级本程序的话，手动覆盖文件或者使用`update_smsforwarder.sh`。
 
 # 卸载方法
 
