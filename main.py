@@ -19,10 +19,10 @@ logging.basicConfig(
     ]
 )
 
-def sms_received_handler(path, received):
+def sms_received_handler(sms_path, received):
     if not received:
         return
-    pool.apply_async(forward_sms, args=(path, logging,))
+    pool.apply_async(forward_sms, args=(sms_path, logging,)) 
 
 def sigint_handler(sig, frame):
     logging.info("🛑 正在退出...")
