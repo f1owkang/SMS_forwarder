@@ -3,8 +3,8 @@ Description=SMS Forwarder (using ModemManager)
 After=dbus.target
 
 [Service]
-Type=Exec
-Restart=yes
+Type=simple
+Restart=on-failure
 ExecStart=/usr/bin/python3 /home/forward/main.py
 
 [Install]
