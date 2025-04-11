@@ -22,10 +22,10 @@ curl -L https://github.com/f1owkang/SMS_forwarder/archive/refs/heads/master.zip 
 unzip -q "$TMP_DIR/master.zip" -d "$TMP_DIR"
 
 # 删除配置文件，防止覆盖
-rm -f "$TMP_DIR/SMS_forwarder-master/config_recipients.json"
+rm -f "$TMP_DIR/SMS_forwarder-main/config_recipients.json"
 
 # 拷贝文件覆盖旧文件
-cp -r "$TMP_DIR/SMS_forwarder-master/"* "$INSTALL_DIR/"
+cp -r "$TMP_DIR/SMS_forwarder-main/"* "$INSTALL_DIR/"
 
 # 清理临时文件
 rm -rf "$TMP_DIR"

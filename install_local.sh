@@ -9,6 +9,7 @@ cp smsforwarder.service /etc/systemd/system/
 # 等待 1 秒
 sleep 1
 
+systemctl daemon-reload
 # 启动服务
 systemctl start smsforwarder
 # 设置服务开机自启

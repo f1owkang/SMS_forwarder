@@ -17,8 +17,8 @@ unzip smsforwarder.zip
 # 删除 ZIP 文件
 rm smsforwarder.zip
 # 将解压的内容移到上一级目录并删除空目录
-mv SMS_forwarder-master/* .
-rmdir SMS_forwarder-master
+mv SMS_forwarder-main/* .
+rmdir SMS_forwarder-main
 
 # 给安装脚本添加执行权限
 chmod +x ./install_smsforwarder.sh
