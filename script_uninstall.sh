@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # 停止并禁用服务
 sudo systemctl stop smsforwarder
 sudo systemctl disable smsforwarder

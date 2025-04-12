@@ -16,18 +16,19 @@ mkdir -p "$TMP_DIR"
 
 # 下载最新代码压缩包
 echo "正在下载最新版本..."
-curl -L https://github.com/f1owkang/SMS_forwarder/archive/refs/heads/master.zip -o "$TMP_DIR/master.zip"
+curl -L https://github.com/f1owkang/SMS_forwarder/archive/refs/heads/main.zip -o "$TMP_DIR/main.zip"
 
 # 解压
-unzip -q "$TMP_DIR/master.zip" -d "$TMP_DIR"
+unzip -q "$TMP_DIR/main.zip" -d "$TMP_DIR"
 
 # 删除配置文件，防止覆盖
-rm -f "$TMP_DIR/SMS_forwarder-main/config_recipients.json"
-
+rm -f "$TMP_DIR/SMS_forwarder-main/config.json"
 # 拷贝文件覆盖旧文件
 cp -r "$TMP_DIR/SMS_forwarder-main/"* "$INSTALL_DIR/"
-
 # 清理临时文件
 rm -rf "$TMP_DIR"
+
+# 启动服务
+systemctl restart smsforwarder
 
 echo "升级完成 ✅，原配置已保留。"
