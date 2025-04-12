@@ -14,6 +14,7 @@ import jieba.analyse
 from datetime import datetime
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
+jieba.setLogLevel(20)
 
 # ======================
 # 配置路径和开关
@@ -68,12 +69,21 @@ class KeywordExtractor:
         code_match = re.search(r'(验证码|校验码|动态码)[^\d]{0,10}?(\d{4,6})(?=\D|$)', text, flags=re.IGNORECASE)
         if code_match:
             return f"验证码【{code_match.group(2)}】"
-        keywords = jieba.analyse.extract_tags(text, topK=10)  # 提取更多再筛
+
+        def is_number(s):
+            try:
+                float(s)
+                return True
+            except ValueError:
+                return False
+
+        keywords = jieba.analyse.extract_tags(text, topK=10)
         keywords = [
             w for w in keywords
-            if len(w) >= 2 and not w.isdigit() and w not in self.stopwords
+            if len(w) >= 2 and not is_number(w) and w not in self.stopwords
         ]
-        return '、'.join(keywords[:3])
+        return '、'.join(keywords[:4])
+
 # ======================
 # 类：短信转发
 # ======================
